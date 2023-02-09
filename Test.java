@@ -1,27 +1,28 @@
+//? Pair-Programming -> Dominic
 public class Test {
     public static void main(String[] args) {
         // .. Main method set up ... //
         Physician doctor10 = new Physician(1);
         AdminUser roseTyler = new AdminUser(2, "Companion");
         AdminUser donnaNoble = new AdminUser(3, "Companion");
-        
+
         System.out.println(doctor10.getId());
         System.out.println(roseTyler.getId());
         System.out.println(donnaNoble.getId());
         
-        // Physician Implementation Tests
+        //? Physician Implementation Tests
         System.out.println("\n==</span>======== Physician Tests ==========\n");
         //& if this is false it returns pass
-        //? should be false b/c it is not atleast 4 digits long -> false should return pass
+        //~ should be false b/c it is not atleast 4 digits long -> false should return pass
         String pinTest1 = doctor10.assignPin(42)? "FAIL" : "PASS";
         System.out.printf("Physician pin assign test 1: %s\n", pinTest1);
         
-        //? this should be true b/c atleast 4 digits long -> true should return pass
+        //~ this should be true b/c atleast 4 digits long -> true should return pass
         String pinTest2 = doctor10.assignPin(4000)? "PASS" : "FAIL";
         System.out.printf("Physician pin assign test 2: %s\n", pinTest2);
         
-        //? return false when suppose to and return true otherwise
-        //~ this should be false so will print out pass
+        //~ return false when suppose to and return true otherwise
+        // this should be false so will print out pass
         String authTest1 = doctor10.accessAuthorized(1234)? "FAIL" : "PASS";
         System.out.printf("Physician auth test 1: %s\n", authTest1);
         
@@ -29,6 +30,7 @@ public class Test {
         String authTest2 = doctor10.accessAuthorized(1)? "PASS" : "FAIL";
         System.out.printf("Physician auth test 2: %s\n", authTest2);
         
+
         // AdminUser Implementation Tests
         System.out.println("\n========== AdminUser Tests ==========\n");
         String pinTest3 = roseTyler.assignPin(42)? "FAIL" : "PASS";

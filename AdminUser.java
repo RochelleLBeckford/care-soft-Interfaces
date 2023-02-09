@@ -38,14 +38,17 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     @Override
     public ArrayList<String> reportSecurityIncidents() {
         // TODO Auto-generated method stub
-        return null;
+        // return null;
+        return securityIncidents;
     }
 
     // TODO: Implement HIPAACompliantUser!
     @Override
     public boolean assignPin(int pin) {
         // TODO Auto-generated method stub
-        return false;
+        int numlen = Integer.toString(pin).length();
+        // return false;
+        return numlen == 6;
     }
     @Override
     public boolean accessAuthorized(Integer confirmedAuthID) {
