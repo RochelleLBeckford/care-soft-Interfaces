@@ -8,7 +8,8 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     // Inside class:
     // private Integer employeeID; -> this is not being used anywhere
     private String role;
-    private ArrayList<String> securityIncidents;
+                                                //? have to add this 
+    private ArrayList<String> securityIncidents = new ArrayList<>();
     
     // TO DO: Implement a constructor that takes an ID and a role
     public AdminUser(Integer id, String role ) {
@@ -26,6 +27,7 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
         );
         securityIncidents.add(report);
     }
+
     public void authIncident() {
         String report = String.format(
             "Datetime Submitted: %s \n,  ID: %s\n Notes: %s \n", 
@@ -47,15 +49,46 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     public boolean assignPin(int pin) {
         // TODO Auto-generated method stub
         int numlen = Integer.toString(pin).length();
+        // System.out.println(numlen == 6);
+        if (numlen == 6) {
+            return true;
+        } else {
+            return false;
+        }
         // return false;
-        return numlen == 6;
+        // return numlen == 6;
     }
+
     @Override
     public boolean accessAuthorized(Integer confirmedAuthID) {
         // TODO Auto-generated method stub
-        return false;
+        System.out.println(confirmedAuthID);
+        if (confirmedAuthID == this.getId()) {
+            return true;
+        } else {
+            authIncident();
+            return false;
+        }
+        // return false;
     }
     
     // TODO: Setters & Getters
+
+    public String getRole() {
+        return this.role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public ArrayList<String> getSecurityIncidents() {
+        return this.securityIncidents;
+    }
+
+    public void setSecurityIncidents(ArrayList<String> securityIncidents) {
+        this.securityIncidents = securityIncidents;
+    }
+
 
 }
